@@ -1,37 +1,37 @@
 const Sequelize = require('sequelize');
 const database = require('../db');
-const Pessoa = require('./pessoa');
 
 
-const Usuario = database.define('usuario', {
-    usuario_id: {
+const Conta = database.define('conta', {
+    conta_id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true
     },
 
-    email: {
+    numero: {
         type: Sequelize.STRING,
         allowNull: false,
         unique: true
     },
 
-    senha: {
+    nome: {
         type: Sequelize.STRING,
         allowNull: false
     },
 
-    pessoaId: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        unique: true,
-        references: {
-            model: Pessoa,
-            key: 'id',
-        }
+    data_abertura: {
+       type: Sequelize.DATE,
+       allowNull: false
+    },
+
+    saldo: {
+        type: Sequelize.DOUBLE,
+        allowNull:false
     }
+
 
 })
 
-Pessoa.hasOne(Usuario, { foreignKey: 'pessoaId' });
+
