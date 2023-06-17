@@ -35,3 +35,7 @@ const Usuario = database.define('usuario', {
 })
 
 Pessoa.hasOne(Usuario, { foreignKey: 'pessoaId' });
+Conta.belongsTo(Usuario, { foreignKey: 'usuario_id' });
+
+
+module.exports = Usuario;

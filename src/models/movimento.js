@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const database = require('../db');
+const Conta = require('./conta');
 
 
 const Movimento = database.define('movimento', {
@@ -8,6 +9,16 @@ const Movimento = database.define('movimento', {
         autoIncrement: true,
         allowNull: false,
         primaryKey: true
+    },
+
+    conta_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        unique: true,
+        references: {
+            model: Conta,
+            key: 'id',
+        }
     },
 
     tipo: {
@@ -43,3 +54,7 @@ const Movimento = database.define('movimento', {
 
 
 })
+
+Conta.hasMany(Movimento, { foreignKey: 'conta_id' });
+
+module.exports = Movimento;

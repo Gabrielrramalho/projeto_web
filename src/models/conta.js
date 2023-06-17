@@ -1,5 +1,8 @@
 const Sequelize = require('sequelize');
 const database = require('../db');
+const Usuario = require('./usuario');
+const Movimento = require('./movimento');
+
 
 
 const Conta = database.define('conta', {
@@ -8,6 +11,16 @@ const Conta = database.define('conta', {
         autoIncrement: true,
         allowNull: false,
         primaryKey: true
+    },
+
+    usuario_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        unique: true,
+        references: {
+            model: Usuario,
+            key: 'id',
+        }
     },
 
     numero: {
@@ -33,5 +46,11 @@ const Conta = database.define('conta', {
 
 
 })
+
+Usuario.hasMany(Conta, { foreignKey: 'usuario_id' });
+Conta.belongsTo(Movimento, { foreignKey: 'conta_id' });
+
+
+module.exports = Movimento;
 
 
