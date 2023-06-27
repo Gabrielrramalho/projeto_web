@@ -15,7 +15,7 @@
         <h1>Cadastro</h1>
     </div>
     <div class="container mt-3">
-        <form method="POST" action="">
+        <form method="POST" action="/pessoa/cadastro">
             <div class="row">
                 <div class="col-4">
                     <label class="form-label" for="nome">Nome:</label>
@@ -44,12 +44,20 @@
                     <label class="form-label" for="endereco">Cep:</label>
                     <input class="form-control" type="text" id="cep" name="cep">
                 </div>
+                <div class="col-6">
+                    <label for="email" class="form-label">E-mail:</label>
+                    <input type="email" class="form-control" id="email" placeholder="E-mail" />
+                </div>
+                <div class="col-6">
+                    <label for="senha" class="form-label">Senha:</label>
+                    <input type="password" class="form-control" id="senha" placeholder="Senha" />
+                </div>
                 
                 <div class="d-grid mt-3">
                     <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
                 </div>
 
-
+                
             </div>
         </form>
 

@@ -9,8 +9,9 @@ app.engine('html', mustacheExpress());
 app.set('view engine', 'html');
 app.set('views',__dirname+'/src/views');
 
-
+app.use('/',require('./src/routes/pessoaRoutes'));
 app.use('/', require('./src/routes/indexRutes'));
+
 
 db.sync(()=> console.log("Banco de dados conectado!!"));
 
