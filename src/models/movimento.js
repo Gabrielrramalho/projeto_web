@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const database = require('../db');
-const Conta = require('./conta');
-
+const Usuario = require('./usuario');
+const Conta = require('./conta'); // Importe o modelo Conta antes do Movimento
 
 const Movimento = database.define('movimento', {
     movimento_id: {
@@ -46,15 +46,10 @@ const Movimento = database.define('movimento', {
         allowNull: false
     },
 
-
     observacao: {
         type: Sequelize.CHAR(250)
     }
+});
 
-
-
-})
-
-Conta.hasMany(Movimento, { foreignKey: 'conta_id' });
 
 module.exports = Movimento;

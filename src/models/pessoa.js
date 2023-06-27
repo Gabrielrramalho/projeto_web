@@ -41,4 +41,6 @@ const Pessoa = database.define('pessoa', {
 
 })
 
+
+
 module.exports = Pessoa;

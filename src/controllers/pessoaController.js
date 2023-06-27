@@ -1,6 +1,7 @@
 const Pessoa = require('../models/pessoa');
 const Usuario = require('../models/usuario');
 
+
 function cadastrarView(req,res){
     res.render('pessoa/cadastro.html')
 }
@@ -20,17 +21,7 @@ function cadastrarPessoa_Usuario(req, res) {
       senha: req.body.senha
     };
   
-    sequelize.transaction(async (transaction) => {
-        try {
-          const novaPessoa = await Pessoa.create(pessoaData, { transaction });
-          const novoUsuario = await Usuario.create(usuarioData, { transaction });
-      
-          res.render("pessoa/cadastro.html", { pessoa: novaPessoa, usuario: novoUsuario });
-        } catch (error) {
-          console.log("Erro:", error);
-          res.render("pessoa/cadastro.html", {});
-        }
-      });
+
       
 }
 
