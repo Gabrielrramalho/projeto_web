@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
 const database = require('../db');
 const Pessoa = require('./pessoa');
+const Conta = require('./conta')
 
 
 const Usuario = database.define('usuario', {

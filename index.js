@@ -1,6 +1,6 @@
 const express = require('express');
 const mustacheExpress = require('mustache-express');
-const db = require('./db');
+const db = require('./src/db');
 
 
 const app = express();
