@@ -17,16 +17,13 @@ const Usuario = database.define('usuario', {
     senha: {
         type: Sequelize.STRING,
         allowNull: false
-    },
-    pessoaId: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        unique: true,
-        references: {
-            model: Pessoa,
-            key: 'id',
-        }
     }
+});
+
+
+Usuario.belongsTo(Pessoa,{
+    constraint: true,
+    foreignKey: 'pessoaId'
 });
 
 

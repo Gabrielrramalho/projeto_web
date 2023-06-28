@@ -22,7 +22,6 @@ const Pessoa = database.define('pessoa', {
 
     data_nascimento: {
         type: Sequelize.DATE,
-        allowNull: false
     },
 
     telefone: {

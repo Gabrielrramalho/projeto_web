@@ -2,18 +2,6 @@ const express = require('express');
 const mustacheExpress = require('mustache-express');
 const db = require('./src/db');
 
-const Usuario = require('./src/models/usuario');
-const Pessoa = require('./src/models/pessoa');
-const Conta = require('./src/models/conta');
-const Movimento = require('./src/models/movimento');
-
-Usuario.hasOne(Pessoa, { foreignKey: 'usuarioId' });
-Pessoa.belongsTo(Usuario, { foreignKey: 'usuarioId' });
-Conta.belongsTo(Usuario, { foreignKey: 'usuarioId' });
-Usuario.hasMany(Conta, { foreignKey: 'usuarioId' });
-Movimento.belongsTo(Conta, { foreignKey: 'contaId' });
-Conta.hasMany(Movimento, { foreignKey: 'contaId' });
-
 
 
 
