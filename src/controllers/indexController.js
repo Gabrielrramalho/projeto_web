@@ -1,5 +1,5 @@
 function indexView(req,res){
-    res.render('login.html',{})
+    res.render('contas.html',{})
 }
 
 

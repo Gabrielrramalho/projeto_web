@@ -116,6 +116,7 @@
         role="dialog" id="modalTour">
         <div class="modal-dialog" role="document">
             <div class="modal-content rounded-4 shadow">
+                {{#conta}}
                 <div class="modal-body p-5">
                     <h2 class="fw-bold mb-0">Conta Corrente</h2>
 
@@ -125,7 +126,8 @@
                                 <use xlink:href="#grid-fill" />
                             </svg>
                             <div>
-                                <h5 class="mb-0">Nome</h5>
+                                <h5 class="mb-0">Nome: {{nome}}</h5>
+                                
 
                             </div>
                         </li>
@@ -134,7 +136,8 @@
                                 <use xlink:href="#grid-fill" />
                             </svg>
                             <div>
-                                <h5 class="mb-0">Nº da conta</h5>
+                                <h5 class="mb-0">Nº da conta:    {{numero}}</h5>
+                                
 
                             </div>
                         </li>
@@ -143,20 +146,22 @@
                                 <use xlink:href="#bookmark-star" />
                             </svg>
                             <div>
-                                <h5 class="mb-0">Saldo</h5>
-
+                                <h5 class="mb-0">Saldo:   {{saldo}}</h5>
+                                
                             </div>
                         </li>
                     </ul>
-                    <button type="button" class="btn btn-lg btn-primary mt-3 w-auto" data-bs-dismiss="modal">Sacar</button>
-                    <button type="button" class="btn btn-lg btn-primary mt-3 w-auto" data-bs-dismiss="modal">Transferir</button>
-                    <button type="button" class="btn btn-lg btn-primary mt-3 w-auto" data-bs-dismiss="modal">Depositar</button>
+
+                    <a href="" class="btn btn-lg btn-primary mt-3 w-auto">Credito</a>
+                    <a href="/conta/debito/{{id}}" class="btn btn-lg btn-primary mt-3 w-auto">Debito</a>
+                    <a href="" class="btn btn-lg btn-primary mt-3 w-autoy">Transferencia</a>
                 </div>
+                {{/conta}}
             </div>
         </div>
     </div>
 
-    
+
     <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"></script>

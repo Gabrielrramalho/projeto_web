@@ -14,22 +14,24 @@ app.set('views',__dirname+'/src/views');
 
 app.use(express.urlencoded({extended: true}));
 
+app.use(session({
+  secret: 'a2b8c3d4e5',
+  name: 'sessionId',
+  resave: false,
+  saveUninitialized: true
+}));
+
 app.use('/',require('./src/routes/pessoaRoutes'));
 app.use('/', require('./src/routes/indexRutes'));
 app.use('/',require('./src/routes/contaRoutes'));
 app.use('/',require('./src/routes/autenticacaoRoutes'));
 
 
-app.use(session({
-  secret: 'secret-token',
-  name: 'sessionId',  
-  resave: false,
-  saveUninitialized: false
-}))
 
 
 
-db.sync({ force: true }).then(() => {
+
+db.sync( ).then(() => {
     console.log('Tabelas criadas');
   }).catch((error) => {
     console.error('Erro ao criar tabelas:', error);

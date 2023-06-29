@@ -16,7 +16,8 @@
 
 <body>
 
-  <div class="modal modal-sheet position-static d-block bg-body-secondary p-4 py-md-5 text-center" tabindex="-1" role="dialog" id="modalTour">
+  <div class="modal modal-sheet position-static d-block bg-body-secondary p-4 py-md-5 text-center" tabindex="-1"
+    role="dialog" id="modalTour">
     <div class="modal-dialog" role="document">
       <div class="modal-content rounded-4 shadow">
         <div class="modal-body p-5">
@@ -32,26 +33,27 @@
               </div>
             </li>
           </ul>
-
-          <!-- Exemplo de cards de seleção -->
+         
           {{#contas}}
           <div class="card mb-3">
             <div class="card-body">
-              <h5 class="card-title">{{nome}}</h5>
-              <p class="card-text">{{descricao}}</p>
-              <a href="#" class="btn btn-primary">Selecionar</a>
+              <h5 class="card-title">Nome da conta</h5>
+              <p>{{nome}}</p>
+              <h6 class="card-title">Nº da conta</h6>
+              <p>{{numero}}</p>
+
+              <a href="/conta/slececionada/{{id}}" class="btn btn-primary">Selecionar</a>
+
             </div>
           </div>
           {{/contas}}
-
-          <!-- Mensagem quando não houver contas -->
+         
           {{^contas}}
           <div class="alert alert-info" role="alert">
             Você não possui contas.
           </div>
           {{/contas}}
 
-          <!-- Botão de criação de conta -->
           <div class="text-center">
             <a href="\conta\cadastrar" class="btn btn-outline-primary">Criar Conta</a>
           </div>
