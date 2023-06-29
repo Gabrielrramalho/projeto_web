@@ -1,5 +1,6 @@
 const express = require('express');
 const mustacheExpress = require('mustache-express');
+const session = require('express-session');
 const db = require('./src/db');
 
 
@@ -15,6 +16,17 @@ app.use(express.urlencoded({extended: true}));
 
 app.use('/',require('./src/routes/pessoaRoutes'));
 app.use('/', require('./src/routes/indexRutes'));
+app.use('/',require('./src/routes/contaRoutes'));
+app.use('/',require('./src/routes/autenticacaoRoutes'));
+
+
+app.use(session({
+  secret: 'secret-token',
+  name: 'sessionId',  
+  resave: false,
+  saveUninitialized: false
+}))
+
 
 
 db.sync({ force: true }).then(() => {

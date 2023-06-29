@@ -9,15 +9,6 @@ const Conta = database.define('conta', {
         allowNull: false,
         primaryKey: true
     },
-    usuario_id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        unique: true,
-        references: {
-            model: Usuario,
-            key: 'id',
-        }
-    },
     numero: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -36,6 +27,10 @@ const Conta = database.define('conta', {
         allowNull: false
     }
 });
+
+
+
+
 
 
 module.exports = Conta;

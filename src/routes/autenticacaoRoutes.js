@@ -1,11 +1,11 @@
 const express = require('express');
 const routes = express.Router();
 
-
-const indexController = require('../controllers/indexController');
 const autenticacaoController = require('../controllers/autenticacaoController');
 
 
-routes.get('/',autenticacaoController.verificarAutenticacao,indexController.indexView);
+routes.get('/login',autenticacaoController.loginView);
+routes.post('/autenticar', autenticacaoController.autenticar);
+
 
 module.exports = routes;

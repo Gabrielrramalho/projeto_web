@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
 const database = require('../db');
 const Pessoa = require('./pessoa');
+const Conta = require('./conta');
 
 const Usuario = database.define('usuario', {
     id: {
@@ -25,6 +26,11 @@ Usuario.belongsTo(Pessoa,{
     constraint: true,
     foreignKey: 'pessoaId'
 });
+
+Usuario.hasMany(Conta, {
+    constraint: true,
+    foreignKey: 'usuarioId'
+  });
 
 
 module.exports = Usuario;
