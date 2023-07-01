@@ -9,12 +9,13 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.112.5">
+    <title>Banco Ucb</title>
+
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/modals/">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <title>Conta Corrente</title>
-</head>
 
+</head>
 
 <style>
     .bd-placeholder-img {
@@ -91,63 +92,43 @@
     }
 </style>
 
-
-
-
-
 <body>
-
     <div class="modal modal-sheet position-static d-block bg-body-secondary p-4 py-md-5 text-center" tabindex="-1"
         role="dialog" id="modalTour">
         <div class="modal-dialog" role="document">
             <div class="modal-content rounded-4 shadow">
-                {{#conta}}
                 <div class="modal-body p-5">
-                    <h2 class="fw-bold mb-0">Conta Corrente</h2>
+                    <h2 class="fw-bold mb-0 text-center">Debito</h2>
 
-                    <ul class="d-grid gap-4 my-5 list-unstyled small">
-                        <li class="d-flex gap-4">
-                            <svg class="bi text-body-secondary flex-shrink-0" width="48" height="48">
-                                <use xlink:href="#grid-fill" />
-                            </svg>
-                            <div>
-                                <h5 class="mb-0">Nome: {{nome}}</h5>
-
-
-                            </div>
-                        </li>
-                        <li class="d-flex gap-4">
-                            <svg class="bi text-body-secondary flex-shrink-0" width="48" height="48">
-                                <use xlink:href="#grid-fill" />
-                            </svg>
-                            <div>
-                                <h5 class="mb-0">Nº da conta: {{numero}}</h5>
-
-
-                            </div>
-                        </li>
-                        <li class="d-flex gap-4">
-                            <svg class="bi text-warning flex-shrink-0" width="48" height="48">
-                                <use xlink:href="#bookmark-star" />
-                            </svg>
-                            <div>
-                                <h5 class="mb-0">Saldo: {{saldo}}</h5>
-
-                            </div>
-                        </li>
-                    </ul>
-                    <a href="/conta/movimento/{{id}}" class="btn btn-lg btn-primary mt-3 w-autoy">Transferencia</a>
-                    <a href="/conta/listar/movimentos/{{id}}" class="btn btn-lg btn-primary mt-3 w-autoy">Histórico</a>
-
+                    
+                    <div class="d-flex gap-4">
+                        <svg class="bi text-body-secondary flex-shrink-0" width="48" height="48">
+                            <use xlink:href="#grid-fill" />
+                        </svg>
+                        <div>
+                            <form action="/conta/debito" method="POST">
+                                <div class="container-fluid">
+                                    <label class="mb-0 h5 mt-5" for="conta_dest">Nº Conta destino</label>
+                                    <input class="form-control mt-1 text-center" type="textr" id="conta_dest"
+                                        name="conta_dest">
+                                </div>
+                                <div class="container-fluid">
+                                    <label class="mb-0 h5 mt-3" for="valor_d">Valor</label>
+                                    <input class="form-control mt-1 text-center" type="number" id="valor_d"
+                                        name="valor_d">
+                                </div>
+                                <input type="submit" class="btn btn-lg btn-primary mt-3" value="Debito">
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                {{/conta}}
             </div>
         </div>
     </div>
 
-
-
-
+    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

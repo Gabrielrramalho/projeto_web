@@ -21,6 +21,7 @@ app.use(session({
   saveUninitialized: true
 }));
 
+app.use('/',require('./src/routes/movimentoRoutes'));
 app.use('/',require('./src/routes/pessoaRoutes'));
 app.use('/', require('./src/routes/indexRutes'));
 app.use('/',require('./src/routes/contaRoutes'));
@@ -31,7 +32,8 @@ app.use('/',require('./src/routes/autenticacaoRoutes'));
 
 
 
-db.sync( ).then(() => {
+
+db.sync( {}).then(() => {
     console.log('Tabelas criadas');
   }).catch((error) => {
     console.error('Erro ao criar tabelas:', error);

@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="pt-br" data-bs-theme="auto">
+
+<head>
+    <script src="/docs/5.3/assets/js/color-modes.js"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.112.5">
+    <title>Banco Ucb</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/modals/">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+
+<style>
+    .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+    }
+
+    @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+        }
+    }
+
+    .b-example-divider {
+        width: 100%;
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+    }
+
+    .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+    }
+
+    .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+    }
+
+    .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+    }
+
+    .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .btn-bd-primary {
+        --bd-violet-bg: #712cf9;
+        --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+        --bs-btn-font-weight: 600;
+        --bs-btn-color: var(--bs-white);
+        --bs-btn-bg: var(--bd-violet-bg);
+        --bs-btn-border-color: var(--bd-violet-bg);
+        --bs-btn-hover-color: var(--bs-white);
+        --bs-btn-hover-bg: #6528e0;
+        --bs-btn-hover-border-color: #6528e0;
+        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+        --bs-btn-active-color: var(--bs-btn-hover-color);
+        --bs-btn-active-bg: #5a23c8;
+        --bs-btn-active-border-color: #5a23c8;
+    }
+
+    .bd-mode-toggle {
+        z-index: 1500;
+    }
+</style>
+
+<body>
+    {{#conta}}
+    <div class="modal modal-sheet position-static d-block bg-body-secondary p-4 py-md-5 text-center" tabindex="-1"
+        role="dialog" id="modalTour">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content rounded-4 shadow">
+                <div class="modal-body p-5">
+                    <h2 class="fw-bold mb-0 text-center">Movimento</h2>
+
+                    <div class="d-flex gap-4">
+                        <svg class="bi text-body-secondary flex-shrink-0" width="48" height="48">
+                            <use xlink:href="#grid-fill" />
+                        </svg>
+                        <div>
+                            <h1 class="mb-0 h5 mt-5">Conta: {{numero}}</h1>
+                        </div>
+                    </div>
+                    <div class="d-flex gap-4">
+                        <svg class="bi text-body-secondary flex-shrink-0" width="48" height="48">
+                            <use xlink:href="#grid-fill" />
+                        </svg>
+                        <div>
+                            <h1 class="mb-0 h5 mt-5">Nome: {{nome}}</h1>
+                        </div>
+                    </div>
+                    <div class="d-flex gap-4">
+                        <svg class="bi text-body-secondary flex-shrink-0" width="48" height="48">
+                            <use xlink:href="#grid-fill" />
+                        </svg>
+                        <div>
+                            <h1 class="mb-0 h5 mt-5">Saldo: {{saldo}}</h1>
+                        </div>
+                    </div>
+                    <div class="d-flex gap-4">
+                        <svg class="bi text-body-secondary flex-shrink-0" width="48" height="48">
+                            <use xlink:href="#grid-fill" />
+                        </svg>
+                        <div>
+                            <form action="/conta/movimento/{{id}}" method="POST">
+                                <div class="container-fluid">
+                                    <label class="mb-0 h5 mt-5" for="valor_c">Valor</label>
+                                    <input class="form-control mt-1 text-center" type="number" id="valor_c"
+                                        name="valor_c">
+                                    <label class="mb-0 h5 mt-3" for="conta_destino">Conta de Destino</label>
+                                    <input class="form-control mt-1 text-center" type="text" id="conta_destino"
+                                        name="conta_destino">
+                                    <label class="mb-0 h5 mt-3" for="data">Data</label>
+                                    <input class="form-control mt-1 text-center" type="date" id="data" name="data"
+                                        value="{{dataAtual}}">
+                                    <label class="mb-0 h5 mt-3" for="observacao">Observação</label>
+                                    <textarea class="form-control mt-1" id="observacao" name="observacao"
+                                        rows="3"></textarea>
+                                </div>
+                                <input type="submit" class="btn btn-lg btn-primary mt-3" value="Confirmar">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/conta}}
+
+    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

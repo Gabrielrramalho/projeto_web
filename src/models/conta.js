@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
 const database = require('../db');
 const Usuario = require('./usuario');
+const Movimento = require('./movimento');
 
 const Conta = database.define('conta', {
     id: {
@@ -28,6 +29,11 @@ const Conta = database.define('conta', {
     }
 });
 
+
+Conta.belongsTo(Usuario,{
+    constraint: true,
+    foreignKey: 'usuarioId'
+});
 
 
 

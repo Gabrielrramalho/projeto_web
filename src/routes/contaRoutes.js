@@ -2,12 +2,16 @@ const express = require('express');
 const routes = express.Router();
 
 const ContaController = require('../controllers/contaController');
-routes.get('/conta/slececionada/:id',ContaController.contaSelecionadaView);
-routes.get('/conta/debito/:id',ContaController.debitoView);
-routes.get('/conta/cadastrar',ContaController.criarContaView);
-routes.post('/conta/cadastrar',ContaController.criarConta);
+const autenticacaoController = require('../controllers/autenticacaoController');
 
-routes.get('/conta/listar',ContaController.listarContasView);
+routes.get('/conta/selecionada/:id',autenticacaoController.verificarAutenticacao, ContaController.contaSelecionadaView);
 
+routes.get('/conta/cadastrar',autenticacaoController.verificarAutenticacao, ContaController.criarContaView);
+routes.post('/conta/cadastrar',autenticacaoController.verificarAutenticacao, ContaController.criarConta);
+
+routes.get('/conta/listarContasUsuario',autenticacaoController.verificarAutenticacao, ContaController.listarContasViewUsuario);
+
+routes.get('/conta/debito',autenticacaoController.verificarAutenticacao,ContaController.debitoView);
+routes.post('/conta/debito',autenticacaoController.verificarAutenticacao,ContaController.debitoContaSelecionada);
 
 module.exports = routes;
