@@ -92,20 +92,7 @@ async function realizarMovimento(req, res) {
     res.render("movimento.html", { erro: err });
   }
 }
-function formatarData(data) {
-  if (data instanceof Date && !isNaN(data)) {
-    const dia = String(data.getDate()).padStart(2, '0');
-    const mes = String(data.getMonth() + 1).padStart(2, '0');
-    const ano = data.getFullYear();
-    return `${dia}/${mes}/${ano}`;
-  } else if (typeof data === 'string') {
-    const dataSemHora = data.split('T')[0];
-    const [ano, mes, dia] = dataSemHora.split('-');
-    return `${dia}/${mes}/${ano}`;
-  } else {
-    return 'Data inválida';
-  }
-}
+
 
 
 function listarMovimentosUsuario(req, res) {

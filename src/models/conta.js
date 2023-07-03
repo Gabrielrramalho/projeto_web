@@ -1,7 +1,6 @@
 const Sequelize = require('sequelize');
 const database = require('../db');
 const Usuario = require('./usuario');
-const Movimento = require('./movimento');
 
 const Conta = database.define('conta', {
     id: {
